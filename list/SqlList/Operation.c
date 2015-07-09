@@ -13,3 +13,23 @@ Status GetElem(SqList L, int i, ElemType *e){
 	*e = L.data[i-1];
 	return OK;
 }
+
+Status ListInsert(SqList *L, int i, ElemType e){
+	int k;
+	if(L->length == MAXSIZE)
+		return ERROR;
+	if(i < 1 || i > L->length + 1)
+}
+
+Status ListInsert(SqList *L, int i, ElemType e){
+	int k;
+	if (L->length == MAXSIZE)
+		return ERROR;
+	if (i < 1 || i > L->length + 1)
+		return ERROR;
+	if (i <= L->length){
+		for(i <= L->length - 1; k >= i - 1; k--)
+			L->data[k+1] = L->data[k];
+	}
+	
+}
