@@ -1,9 +1,15 @@
-#define OK 1
-#define ERROR 0
-/* stdbool define TRUE and FALSE */
-#define TRUE 1
-#define FALSE 0
-typedef int Status;
+#include "Data_Base.h"
+
+Status InitSqList(SqList *L){
+	if (!L)
+		return ERROR;
+	for(int i = 0; i < MAXSIZE - 4; i++){
+		a->value[i] = "liam";
+		a->length = i;
+		
+	}
+	return OK;
+}
 
 Status GetElem(SqList L, int i, ElemType *e){
 	if (L.length == 0 || i < 1 || i > L.length)

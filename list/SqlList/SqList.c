@@ -1,7 +1,7 @@
-#define MAXSIZE 20 /*存储空间初始分配量*/
-typedef int ElemType;
-typedef struct{
-	ElemType data[MAXSIZE];
-	int length;
-} SqList;
+#include "Data_Base.h"
+#include <stdio.h>
+#include <stdbool.h>
 
+int main(int argc, const char *argv[]){
+	return TRUE;
+}
