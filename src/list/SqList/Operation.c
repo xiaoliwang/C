@@ -32,14 +32,13 @@ Status ListInsert(SqList *L, int i, ElemType e)
 {
   int k;
   if (L->length == MAXSIZE)
-    return ERROR;
+	  return ERROR;
   if (i < 1 || i > L->length + 1)
-    return ERROR;
-  if (i <= L->length){
-    for ( k <= L->length - 1; k >= i - 1; k--)
-      L->data[k+1] = L->data[k];
+	  return ERROR;
+  for (k = L->length - 1; k >= i - 1; k--) {
+	  L->data[k + 1] = L->data[k];
   }
-  L->data[i-1] = e;
+  L->data[i - 1] = e;
   L->length++;
   return OK;
 }
@@ -47,14 +46,14 @@ Status ListInsert(SqList *L, int i, ElemType e)
 Status ListDelete(SqList *L, int i, ElemType e)
 {
   int k;
-  if (L->length == 1)
+  if (L->length == 0)
     return ERROR;
   if (i < 1 || i > L->length)
     return ERROR;
   e = L->data[i-1];
   if (i < L->length){
     for ( k = i; k < L->length; k++)
-      L->data[i-1] = L->data[i];
+      L->data[k-1] = L->data[k];
   }
   L->length--;
   return OK;

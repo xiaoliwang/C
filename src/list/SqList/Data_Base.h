@@ -17,5 +17,8 @@ typedef struct
 }SqList;
 
 Status InitSqList(SqList *L);
+Status GetElem(SqList L, int i, ElemType *e);
+Status ListInsert(SqList *L, int i, ElemType e);
+Status ListDelete(SqList *L, int i, ElemType e);
 
 #endif 
