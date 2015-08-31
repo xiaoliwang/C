@@ -6,7 +6,7 @@
 #define TRUE 1
 #define FALSE 0
 
-typedef int SElemType;
+typedef char *SElemType;
 typedef int Status;
 
 typedef struct StackNode

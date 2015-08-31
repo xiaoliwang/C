@@ -1,6 +1,7 @@
 #include "DataBase.h"
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 
 Status Init(LinkStack *S)
 {
@@ -12,7 +13,8 @@ Status Init(LinkStack *S)
 Status Push(LinkStack *S, SElemType e)
 {
   LinkStackPtr s = (LinkStackPtr)malloc(sizeof(StackNode));
-  s->data = e;
+  s->data = (SElemType) malloc((strlen(e) + 1) * sizeof(char));
+  strcpy(s->data, e);
   s->next = S->top;
   S->top = s;
   S->count++;
@@ -24,7 +26,8 @@ Status Pop(LinkStack *S, SElemType *e)
   LinkStackPtr p;
   if(StackEmpty(*S))
 	  return ERROR;
-  *e = S->top->data;
+  *e = (SElemType) malloc((strlen(S->top->data) + 1) * sizeof(char));
+  strcpy(*e, S->top->data);
   p = S->top;
   S->top = S->top->next;
   free(p);
