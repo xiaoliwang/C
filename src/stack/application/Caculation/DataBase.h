@@ -6,7 +6,7 @@
 #define TRUE 1
 #define FALSE 0
 
-typedef char *SElemType;
+typedef void *SElemType;
 typedef int Status;
 
 typedef struct StackNode
@@ -22,8 +22,8 @@ typedef struct LinkStack
 }LinkStack;
 
 Status Init(LinkStack *S);
-Status Push(LinkStack *S, SElemType e);
-Status Pop(LinkStack *S, SElemType *e);
+Status Push(LinkStack *S, SElemType e, int type);
+Status Pop(LinkStack *S, SElemType *e, int type);
 Status StackEmpty(LinkStack S);
 
 #endif
