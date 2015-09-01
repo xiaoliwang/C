@@ -42,7 +42,7 @@ int infixToPostfix(char *argv[], char *postfix[], int argc){
         || strcmp(S->top->data, "(") == 0) {
         Push(S, argv[i], 1);
       } else {
-        while (Pop(S, e, 1)){
+        while (strcmp(S->top->data, "-") != 0 && strcmp(S->top->data, "+") != 0 && Pop(S, e, 1)){
           postfix[j] = (char *) malloc((strlen(*e) + 1) * sizeof(char));
           strcpy(postfix[j++], *e);
         }
