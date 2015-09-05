@@ -1,5 +1,4 @@
-
-int Index(String S, String T, int pos)
+int Index(String S, string T, int pos)
 {
   int n, m, i;
   String sub;
