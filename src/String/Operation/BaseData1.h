@@ -3,6 +3,6 @@
 
 #define OK 1
 typedef char * String;
-void get_next(String T, int *next);
+void get_next(String T, int len, int *next);
 
 #endif
