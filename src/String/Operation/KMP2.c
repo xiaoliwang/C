@@ -5,11 +5,11 @@
 
 int main(int argc, const char *argv[])
 {
-  String S = "abcdabcdeabcde";
+  String S = "aaaaaabc";
   int len1 = strlen(S);
-  String T = "abcde";
+  String T = "aaabc";
   int len2 = strlen(T);
-  int index = Index_KMP(S, len1, T, len2, 6);
+  int index = Index_KMP(S, len1, T, len2, 0);
   printf("%d\n", index);
   return OK;
 }
@@ -35,6 +35,29 @@ int Index_KMP(String S, int len1, String T, int len2, int pos)
     return 0;
 }
 
+//改进kmp算法
+void get_nextval(String T, int len, int *next)
+{
+  int i = 1, j = 0;
+  next[0] = 0;
+  next[1] = 1;
+  len = len - 1;
+  while (i < len) {
+    if (T[i] == T[j]) {
+      if (T[++i] == T[j]) {
+        next[i] = next[j];
+      } else {
+        next[i] = j + 1;
+      }
+    } else if (j == 0) {
+      next[++i] = 1;
+    } else {
+      j = 0;
+    }
+  }
+}
+
+//kmp算法
 void get_next(String T, int len, int *next)
 {
   int i = 1, j = 0;
