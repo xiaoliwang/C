@@ -10,7 +10,7 @@ void CreateBiThrTree(BiThrTree *T)
   if (ch == '#') {
     *T = NULL;
   } else {
-    *T = (BiThrTree) malloc(sizeof(BiThrTree));
+    *T = (BiThrTree) malloc(sizeof(BiThrNode));
     (*T)->data = ch;
     CreateBiThrTree(&(*T)->lchild);
     CreateBiThrTree(&(*T)->rchild);
@@ -18,11 +18,12 @@ void CreateBiThrTree(BiThrTree *T)
 }
 
 //设置全局变量
-BiThrTree pre;
+BiThrTree pre; 
 
 // 中序遍历进行中序线索化
 void InThreading(BiThrTree p)
 {
+  pre = (BiThrTree) malloc(sizeof(BiThrNode));
   if (p) {
     InThreading(p->lchild);
     if (!p->lchild) {
@@ -41,8 +42,9 @@ void InThreading(BiThrTree p)
 //中序遍历
 void InOrderTraverse_Thr(BiThrTree T)
 {
-  BiThrTree p;
+  BiThrTree p = (BiThrTree) malloc(sizeof(BiThrNode));
   p = T->lchild;
+  puts("he");
   while (p != T) {
     while (p->LTag == Link)
       p = p->lchild;

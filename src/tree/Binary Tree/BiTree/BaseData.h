@@ -7,6 +7,8 @@
 #ifndef _BASE_DATA_
 #define _BASE_DATA_
 
+#define OK 1
+
 typedef char TElemType;
 
 typedef struct BiTNode

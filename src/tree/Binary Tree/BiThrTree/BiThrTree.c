@@ -7,6 +7,7 @@ int main(int argc, const char *argv[])
   BiThrTree *T = (BiThrTree *) malloc(sizeof(BiThrTree));
   CreateBiThrTree(T);
   InThreading(*T);
-  //InOrderTraverse_Thr(*T);
+  InOrderTraverse_Thr(*T);
+  return OK;
 }
 
