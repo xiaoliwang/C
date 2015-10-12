@@ -1,5 +1,26 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include "BaseData.h"
+
+//前序创建线索树
+void CreateBiThrTree(BiThrTree *T)
+{
+  TElemType ch;
+  scanf("%c", &ch);
+  if (ch == '#') {
+    *T = NULL;
+  } else {
+    *T = (BiThrTree) malloc(sizeof(BiThrTree));
+    (*T)->data = ch;
+    CreateBiThrTree(&(*T)->lchild);
+    CreateBiThrTree(&(*T)->rchild);
+  }
+}
+
+//设置全局变量
 BiThrTree pre;
 
+// 中序遍历进行中序线索化
 void InThreading(BiThrTree p)
 {
   if (p) {
@@ -17,12 +38,13 @@ void InThreading(BiThrTree p)
   }
 }
 
+//中序遍历
 void InOrderTraverse_Thr(BiThrTree T)
 {
   BiThrTree p;
   p = T->lchild;
   while (p != T) {
-    while (p->LTage == Link)
+    while (p->LTag == Link)
       p = p->lchild;
     printf("%c", p->data);
     while (p->RTag == Thread && p->rchild != T) {
@@ -31,5 +53,4 @@ void InOrderTraverse_Thr(BiThrTree T)
     }
     p = p->rchild;
   }
-  return OK;
 }

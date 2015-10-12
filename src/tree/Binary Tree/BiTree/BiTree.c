@@ -1,6 +1,7 @@
 #include "BaseData.h"
 #include <stdio.h>
 #include <stdlib.h>
+
 int main(int argc, const char *argv[])
 {
   BiTree *T = (BiTree *) malloc(sizeof(BiTree));
@@ -9,9 +10,10 @@ int main(int argc, const char *argv[])
   printf("\n");
   PostOrderTraverse(*T);
   printf("\n");
+  return OK;
 }
 
-
+//前序创建树
 void CreateBiTree(BiTree *T)
 {
   TElemType ch;

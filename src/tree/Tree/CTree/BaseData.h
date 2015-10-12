@@ -1,3 +1,8 @@
+/*
+ * 树的孩子表示法
+ * author: TomCao
+ */
+ 
 #ifndef _BASE_DATA_
 #define _BASE_DATA_
 
@@ -6,7 +11,7 @@ typedef int TElemType;
 
 typedef struct CTNode
 {
-  int child;
+  int child;  //attention: 
   struct CTNode *next;
 } *ChildPtr;
 
@@ -19,6 +24,7 @@ typedef struct
 typedef struct
 {
   CTBox nodes[MAX_TREE_SIZE];
-  int r,n;
+  int r, n;  //根的位置和结点
 } CTree;
+
 #endif

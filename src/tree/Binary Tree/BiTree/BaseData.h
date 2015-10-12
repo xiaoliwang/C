@@ -1,3 +1,9 @@
+/*
+ * 二叉链表树
+ * author: TomCao
+ *
+ */
+
 #ifndef _BASE_DATA_
 #define _BASE_DATA_
 
