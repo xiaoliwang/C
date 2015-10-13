@@ -1,50 +1,76 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <memory.h>
 #include "BaseData.h"
 
-//Ç°Ðò´´½¨ÏßË÷Ê÷
+//å‰åºåˆ›å»ºäºŒå‰æ ‘
 void CreateBiThrTree(BiThrTree *T)
 {
   TElemType ch;
   scanf("%c", &ch);
+  
   if (ch == '#') {
     *T = NULL;
   } else {
     *T = (BiThrTree) malloc(sizeof(BiThrNode));
+    memset(*T, 0, sizeof(BiThrNode));
     (*T)->data = ch;
     CreateBiThrTree(&(*T)->lchild);
     CreateBiThrTree(&(*T)->rchild);
   }
 }
 
-//ÉèÖÃÈ«¾Ö±äÁ¿
-BiThrTree pre; 
+//è®¾ç½®å…¨å±€å˜é‡ï¼ŒpreæŒ‡å‘å‰ä¸€ä¸ªå¯¹è±¡
+BiThrTree pre;
 
-// ÖÐÐò±éÀú½øÐÐÖÐÐòÏßË÷»¯
-void InThreading(BiThrTree p)
+//ä¸ºçº¿ç´¢åŒ–æ·»åŠ å¤´æŒ‡é’ˆ
+void InThreading_HEAD(BiThrTree *h, BiThrTree t)
 {
-  pre = (BiThrTree) malloc(sizeof(BiThrNode));
+  *h = (BiThrTree) malloc(sizeof(BiThrNode));
+  
+  if (!t) {
+    (*h)->lchild = *h;
+    (*h)->LTag = Link;
+    (*h)->rchild = *h;
+    (*h)->RTag = Link;
+  } else {
+    pre = *h;
+    (*h)->lchild = t;
+    (*h)->LTag = Link;
+    InThreading(t);
+    pre->rchild = *h;
+    pre->RTag = Thread;
+    (*h)->rchild = pre;
+  }
+}
+
+// ä¸­åºéåŽ†è¿›è¡Œä¸­åºçº¿ç´¢åŒ–
+void InThreading(BiThrTree p)
+{  
+  if (!pre)
+    pre = (BiThrTree) malloc(sizeof(BiThrNode));
+  
   if (p) {
     InThreading(p->lchild);
     if (!p->lchild) {
       p->LTag = Thread;
       p->lchild = pre;
     }
-    if (!p->rchild) {
+    if (!pre->rchild) {
       pre->RTag = Thread;
       pre->rchild = p;
     }
     pre = p;
     InThreading(p->rchild);
-  }
+  } 
 }
 
-//ÖÐÐò±éÀú
-void InOrderTraverse_Thr(BiThrTree T)
+
+//ä¸­åºçº¿ç´¢éåŽ†
+int InOrderTraverse_Thr(BiThrTree T)
 {
   BiThrTree p = (BiThrTree) malloc(sizeof(BiThrNode));
   p = T->lchild;
-  puts("he");
   while (p != T) {
     while (p->LTag == Link)
       p = p->lchild;
@@ -55,4 +81,5 @@ void InOrderTraverse_Thr(BiThrTree T)
     }
     p = p->rchild;
   }
+  return OK;
 }

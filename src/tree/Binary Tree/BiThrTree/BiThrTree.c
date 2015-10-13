@@ -4,10 +4,11 @@
 
 int main(int argc, const char *argv[])
 {
-  BiThrTree *T = (BiThrTree *) malloc(sizeof(BiThrTree));
-  CreateBiThrTree(T);
-  InThreading(*T);
-  InOrderTraverse_Thr(*T);
+  BiThrTree t;
+  BiThrTree temp;
+  CreateBiThrTree(&t);
+  InThreading_HEAD(&temp, t);
+  InOrderTraverse_Thr(temp);
   return OK;
 }
 
