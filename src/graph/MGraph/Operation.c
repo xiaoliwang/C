@@ -24,3 +24,27 @@ void CreateMGraph(MGraph *G)
     G->arc[j][i] = G->arc[i][j];
   }
 }
+
+/////////深度优先遍历/////////
+Boolean visited[MAXVEX];
+void DFS(MGraph G, int i)
+{
+  int j;
+  visited[i] = TRUE;
+  printf("%c ", G.vexs[i]);
+  for (j = 0; j < G.numVertexes; j++)
+    if (G.arc[i][j] == 1 && !visited[j])
+      DFS(G, j);
+}
+
+void DFSTraverse(MGraph G)
+{
+  int i;
+  //初始化所有顶点状态为未访问状态
+  for (i = 0; i < G.numVertexes; i++)
+    visited[i] = FALSE;
+  for (i = 0; i < G.numVertexes; i++)
+    //对未访问过的顶点调用DFS，连通图只会执行一次
+    if (!visited[i])
+      DFS(G, i);
+}

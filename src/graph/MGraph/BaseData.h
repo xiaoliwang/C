@@ -8,11 +8,14 @@
 
 #define OK 1
 #define ERROR 0
+#define TRUE 1
+#define FALSE 0
 #define MAXVEX 100
 #define INFINITY 65535
 
 typedef char VertexType;
 typedef int EdgeType;
+typedef int Boolean;
 
 typedef struct
 {
@@ -22,5 +25,5 @@ typedef struct
 }MGraph;
 
 void CreateMGraph(MGraph *G);
-
+void DFSTraverse(MGraph G);
 #endif

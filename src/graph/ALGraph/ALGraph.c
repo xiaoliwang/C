@@ -4,6 +4,7 @@
 
 int main(int argc, const char *argv[])
 {
-  GraphAdjList *G = (GraphAdjList *) malloc(sizeof(GraphAdjList));
-  CreateAlGraph(G);
+  GraphAdjList *GL = (GraphAdjList *) malloc(sizeof(GraphAdjList));
+  CreateAlGraph(GL);
+  DFSTraverse(*GL);
 }
