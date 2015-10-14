@@ -5,18 +5,20 @@
 void CreateMGraph(MGraph *G)
 {
   int i, j, k, w;
-  puts("ÊäÈë¶¥µãÊıºÍ±ßÊı(num,num)");
+  puts("è¾“å…¥é¡¶ç‚¹æ•°å’Œè¾¹æ•°(num,num)");
   scanf("%d,%d", &G->numVertexes, &G->numEdges);
-  for (i = 0; i < G->numVertexes; i++)
-    scanf(&G->vexs[i]);
-  //³õÊ¼»¯ÁÚ½Ó¾ØÕó
+  for (i = 0; i < G->numVertexes; i++) {
+    puts("è¯·è¾“å…¥é¡¶ç‚¹çš„å€¼");
+    scanf("%*c%c", &G->vexs[i]);
+  }
+  //åˆå§‹åŒ–é‚»æ¥çŸ©é˜µ
   for (i = 0; i< G->numVertexes; i++)
     for (j = 0; j< G->numVertexes; j++)
       G->arc[i][j] = INFINITY;
     
   for (k = 0; k < G->numEdges; k++)
   {
-    printf("ÊäÈë±ß(vi,vj)ÉÏµÄÏÂ±êi,ÏÂ±êjºÍÈ¨w:\n");
+    printf("è¾“å…¥è¾¹(vi,vj)ä¸Šçš„ä¸‹æ ‡i,ä¸‹æ ‡jå’Œæƒw:\n");
     scanf("%d,%d,%d", &i, &j, &w);
     G->arc[i][j] = w;
     G->arc[j][i] = G->arc[i][j];

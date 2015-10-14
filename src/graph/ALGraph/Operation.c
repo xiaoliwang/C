@@ -6,21 +6,21 @@ void CreateAlGraph(GraphAdjList *G)
 {
   int i, j, k;
   EdgeNode *e;
-  printf("ÊäÈë¶¥µãÊýºÍ±ßÊý:\n");
+  printf("è¾“å…¥é¡¶ç‚¹æ•°å’Œè¾¹æ•°:\n");
   scanf("%d,%d", &G->numVertexes, &G->numEdges);
   for (i = 0; i < G->numVertexes; i++) {
-    scanf(&G->adjList[i].data);
+    scanf("%*c%c", &G->adjList[i].data);
     G->adjList[i].firstedge = NULL;
   }
   for (k = 0; k < G->numEdges; k++) {
-    printf("ÊäÈë±ß(vi,vj)ÉÏµÄ¶¥µãÐòºÅ:\n");
+    printf("è¾“å…¥è¾¹(vi,vj)ä¸Šçš„é¡¶ç‚¹åºå·:\n");
     scanf("%d,%d", &i, &j);
     e = (EdgeNode *) malloc(sizeof(EdgeNode));
     e->adjvex = j;
     e->next = G->adjList[i].firstedge;
     G->adjList[i].firstedge = e;
     
-    //ÎÞÏò±íÐèÒª¶Ô³ÆÔÙÀ´Ò»´Î
+    //æ— å‘è¡¨éœ€è¦å¯¹ç§°å†æ¥ä¸€æ¬¡
     e = (EdgeNode *) malloc(sizeof(EdgeNode));
     e->adjvex = i;
     e->next = G->adjList[j].firstedge;

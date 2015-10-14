@@ -1,7 +1,7 @@
 /**
- * ÏßË÷¶ş²æÊ÷£¨Threaded Binary Tree£©
+ * çº¿ç´¢äºŒå‰æ ‘ï¼ˆThreaded Binary Treeï¼‰
  * author: TomCao
- * ¶Ô¶ş²æÊ÷½øĞĞÏßË÷»¯
+ * å¯¹äºŒå‰æ ‘è¿›è¡Œçº¿ç´¢åŒ–
  */
 #ifndef _BASE_DATA_
 #define _BASE_DATA_
@@ -9,7 +9,7 @@
 #define OK 1
 #define ERROR 0
 
-typedef enum {Link, Thread} PointerTag; //Link±íÊ¾Ö¸Ïò×óÓÒº¢×ÓµÄÖ¸Õë£¬ Thread±íÊ¾Ö¸ÏòÇ°Çı»òºó¼ÌµÄÏßË÷
+typedef enum {Link, Thread} PointerTag; //Linkè¡¨ç¤ºæŒ‡å‘å·¦å³å­©å­çš„æŒ‡é’ˆï¼Œ Threadè¡¨ç¤ºæŒ‡å‘å‰é©±æˆ–åç»§çš„çº¿ç´¢
 typedef char TElemType;
 
 typedef struct BiThrNode
