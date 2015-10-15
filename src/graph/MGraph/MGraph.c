@@ -7,4 +7,7 @@ int main(int argc, const char *argv[])
   MGraph *G = (MGraph *) malloc(sizeof(MGraph));
   CreateMGraph(G);
   DFSTraverse(*G);
+  puts("");
+  BFSTraverse(*G);
+  puts("");
 }

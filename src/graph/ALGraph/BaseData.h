@@ -38,4 +38,5 @@ typedef struct
 
 void CreateAlGraph(GraphAdjList *G);
 void DFSTraverse(GraphAdjList GL);
+void BFSTraverse(GraphAdjList GL);
 #endif

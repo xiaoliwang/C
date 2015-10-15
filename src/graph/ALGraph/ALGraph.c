@@ -7,4 +7,7 @@ int main(int argc, const char *argv[])
   GraphAdjList *GL = (GraphAdjList *) malloc(sizeof(GraphAdjList));
   CreateAlGraph(GL);
   DFSTraverse(*GL);
+  puts("");
+  BFSTraverse(*GL);
+  puts("");
 }

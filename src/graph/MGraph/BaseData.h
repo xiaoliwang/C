@@ -26,4 +26,5 @@ typedef struct
 
 void CreateMGraph(MGraph *G);
 void DFSTraverse(MGraph G);
+void BFSTraverse(MGraph G);
 #endif

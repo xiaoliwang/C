@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include "BaseData.h"
+#include "Assist.h"
 
 void CreateMGraph(MGraph *G)
 {
@@ -25,7 +26,7 @@ void CreateMGraph(MGraph *G)
   }
 }
 
-/////////深度优先遍历/////////
+/////////深度优先遍历O[n^2]/////////
 Boolean visited[MAXVEX];
 void DFS(MGraph G, int i)
 {
@@ -47,4 +48,32 @@ void DFSTraverse(MGraph G)
     //对未访问过的顶点调用DFS，连通图只会执行一次
     if (!visited[i])
       DFS(G, i);
+}
+
+/////////广度优化遍历/////////
+void BFSTraverse(MGraph G)
+{
+  int i, j;
+  Queue Q;
+  //初始化所有顶点状态
+  for (i = 0; i < G.numVertexes; i++)
+    visited[i] = FALSE;
+  InitQueue(&Q);
+  for (i = 0; i < G.numVertexes; i++) {
+    if (!visited[i]) {
+      visited[i] = TRUE;
+      printf("%c ", G.vexs[i]);
+      EnQueue(&Q, i);
+      while(!QueueEmpty(Q)) {
+        DeQueue(&Q, &i);
+        for (j = 0; j < G.numVertexes; j++) {
+          if (G.arc[i][j] == 1 && !visited[j]) {
+            visited[j] = TRUE;
+            printf("%c ", G.vexs[j]);
+            EnQueue(&Q, j);
+          }
+        }
+      }
+    }
+  }
 }
