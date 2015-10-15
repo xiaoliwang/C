@@ -10,7 +10,8 @@
 #define ERROR 0
 #define TRUE 1
 #define FALSE 0
-#define MAXVEX 100
+#define MAXVEX 20
+#define MAXEDGE 20
 #define INFINITY 65535
 
 typedef char VertexType;
@@ -24,8 +25,17 @@ typedef struct
   int numVertexes, numEdges;
 }MGraph;
 
+typedef struct
+{
+  int begin;
+  int end;
+  int weight;
+}Edge;
+
 void CreateMGraph(MGraph *G);
 void DFSTraverse(MGraph G);
 void BFSTraverse(MGraph G);
 void MiniSpanTree_Prim(MGraph G);
+void MiniSpanTree_Kruskal(MGraph G);
+int Find(int *parent, int f);
 #endif

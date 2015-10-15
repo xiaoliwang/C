@@ -112,3 +112,51 @@ void MiniSpanTree_Prim(MGraph G)
     }
   }
 }
+
+/////////Kruskal算法生成最小生成树O[eloge]/////////
+void MiniSpanTree_Kruskal(MGraph G)
+{
+  int i, j, k, n, m;
+  Edge edge;
+  Edge edges[MAXEDGE];
+  int parent[MAXVEX];
+  k = 0;
+  for (i = 0; i < G.numVertexes; i++) {
+    for (j = i; j < G.numVertexes; j++) {
+      if (G.arc[i][j] < INFINITY) {
+        edges[k].begin = i;
+        edges[k].end = j;
+        edges[k].weight = G.arc[i][j];
+        k++;
+      }
+    }
+  }
+  
+  for (i = 0; i < G.numEdges; i++) {
+    for (j = i; j < G.numEdges; j ++) {
+      if (edges[i].weight > edges[j].weight) {
+        edge = edges[i];
+        edges[i] = edges[j];
+        edges[j] = edge;
+      }
+    }
+  }
+  
+  //此处省略初始化edges函数
+  for (i = 0; i < G.numVertexes; i++)
+    parent[i] = 0;
+  for (i = 0; i < G.numEdges; i++) {
+    n = Find(parent, edges[i].begin);
+    m = Find(parent, edges[i].end);
+    if (n != m) {
+      parent[n] = m;
+      printf("(%d, %d) %d ",edges[i].begin, edges[i].end, edges[i].weight);
+    }
+  }
+}
+
+int Find(int *parent, int f) {
+  while (parent[f] > 0)
+    f = parent[f];
+  return f;
+}
