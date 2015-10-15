@@ -5,7 +5,7 @@
 
 void CreateAlGraph(GraphAdjList *G)
 {
-  int i, j, k;
+  int i, j, k, w;
   EdgeNode *e;
   printf("输入顶点数和边数:\n");
   scanf("%d,%d", &G->numVertexes, &G->numEdges);
@@ -15,10 +15,11 @@ void CreateAlGraph(GraphAdjList *G)
     G->adjList[i].firstedge = NULL;
   }
   for (k = 0; k < G->numEdges; k++) {
-    printf("输入边(vi,vj)上的顶点序号:\n");
-    scanf("%d,%d", &i, &j);
+    printf("输入边(vi,vj)上的顶点序号及权重w:\n");
+    scanf("%d,%d,%d", &i, &j, &w);
     e = (EdgeNode *) malloc(sizeof(EdgeNode));
     e->adjvex = j;
+    e->weight = w;
     e->next = G->adjList[i].firstedge;
     G->adjList[i].firstedge = e;
     

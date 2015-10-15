@@ -34,7 +34,7 @@ void DFS(MGraph G, int i)
   visited[i] = TRUE;
   printf("%c ", G.vexs[i]);
   for (j = 0; j < G.numVertexes; j++)
-    if (G.arc[i][j] == 1 && !visited[j])
+    if (G.arc[i][j] != INFINITY && !visited[j])
       DFS(G, j);
 }
 
@@ -67,7 +67,7 @@ void BFSTraverse(MGraph G)
       while(!QueueEmpty(Q)) {
         DeQueue(&Q, &i);
         for (j = 0; j < G.numVertexes; j++) {
-          if (G.arc[i][j] == 1 && !visited[j]) {
+          if (G.arc[i][j] != INFINITY && !visited[j]) {
             visited[j] = TRUE;
             printf("%c ", G.vexs[j]);
             EnQueue(&Q, j);

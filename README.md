@@ -231,3 +231,5 @@ $\because$深度为[$log_2n$]＋1
 图的遍历(Traversing Graph)
 1. 深度优化遍历(Depth_First_Search),也称为深度优化搜索，简称DFS。
 2. 广度优先遍历(Breadth_First_Search),也称为广度优先搜索，简称BFS。
+
+构造连通网的最小代价生成树称为**最小生成树(Minimum Cost Spanning Tree)**
