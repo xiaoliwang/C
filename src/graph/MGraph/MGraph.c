@@ -10,4 +10,5 @@ int main(int argc, const char *argv[])
   puts("");
   BFSTraverse(*G);
   puts("");
+  MiniSpanTree_Prim(*G);
 }

@@ -233,3 +233,5 @@ $\because$深度为[$log_2n$]＋1
 2. 广度优先遍历(Breadth_First_Search),也称为广度优先搜索，简称BFS。
 
 构造连通网的最小代价生成树称为**最小生成树(Minimum Cost Spanning Tree)**
+1. Prim算法
+2. Kruskal算法
