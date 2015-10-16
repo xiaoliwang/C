@@ -142,7 +142,6 @@ void MiniSpanTree_Kruskal(MGraph G)
     }
   }
   
-  //此处省略初始化edges函数
   for (i = 0; i < G.numVertexes; i++)
     parent[i] = 0;
   for (i = 0; i < G.numEdges; i++) {
@@ -159,4 +158,63 @@ int Find(int *parent, int f) {
   while (parent[f] > 0)
     f = parent[f];
   return f;
+}
+
+/////////Dijkstra最小路径算法/////////
+/**
+ * Pathmatirx *P 用于存储最短路径下标数组
+ * ShortPathTable *D 用于存储到各点最短路径的权值和
+ */
+void ShortestPath_Dijkstra(MGraph G, Pathmatirx *P, ShortPathTable *D)
+{
+  int v, w, k, min;
+  int final[MAXVEX]; //final[w] = 1 表示v0到vw的路径最短
+  //初始化
+  for (v = 0; v < G.numVertexes; v++) {
+    final[v] = 0;
+    (*D)[v] = G.arc[0][v];
+    (*P)[v] = 0;
+  }
+  (*D)[0] = 0;
+  final[0] = 1;
+  
+  for (v = 1; v < G.numVertexes; v++) {
+    min = INFINITY;
+    for (w = 0; w < G.numVertexes; w++) {
+      if(!final[w] && (*D)[w] < min) {
+        k = w;
+        min = (*D)[w];
+      }
+    }
+    final[k] = 1;
+    for (w = 0; w < G.numVertexes; w++) {
+      if (!final[w] && (min + G.arc[k][w] < (*D)[w])) {
+        (*D)[w] = min + G.arc[k][w];
+        (*P)[w] = k;
+      }
+    }
+  }
+}
+
+/////////Floyd最小路径算法/////////
+void ShortestPath_Floyd(MGraph G, Pathmatirx2 *P, ShortPathTable2 *D)
+{
+  int v, w, k;
+  for (v = 0; v < G.numVertexes; ++v) {
+    for (w = 0; w < G.numVertexes; ++w) {
+      (*D)[v][w] = G.arc[v][w];
+      (*P)[v][w] = w;
+    }
+  }
+  for (k = 0; k < G.numVertexes; ++k) {
+    for (v = 0; v < G.numVertexes; ++v) {
+      for (w = 0; w < G.numVertexes; ++ w) {
+        if ((*D)[v][w] > (*D)[v][k] + (*D)[k][w]) {
+          (*D)[v][w] = (*D)[v][k] + (*D)[k][w];
+          (*P)[v][w] = (*P)[v][k];
+        }
+      }
+    }
+  }
+  
 }

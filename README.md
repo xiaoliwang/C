@@ -235,3 +235,18 @@ $\because$深度为[$log_2n$]＋1
 构造连通网的最小代价生成树称为**最小生成树(Minimum Cost Spanning Tree)**
 1. Prim算法
 2. Kruskal算法
+
+最短路径算法
+1. Dijkstra算法
+2. Floyd算法 D^{0}[v][w] = min{D^{-1}[v][w], D^{-1}[v][0] + D^{-1}[0][w]}
+
+AOV网
+AOE网
+拓扑排序，其实就是对一个有向图构造拓扑序列的过程。
+关键排序，路径上各个活动所持续的时间之和称为路径长度，从源点到汇点具有最大长度的路径叫关键路径，在关键路径上的活动叫关键活动。
+
+几个参数:
+1. 事件的最早发生时间etv(earliest time of vertex):即顶点vk的最早发生时间。
+2. 事件的最晚发生时间ltv(latest time of vertex):即顶点vk的最晚发生时间。
+3. 活动的最早开工时间ete(earliest time of edge): 即弧ak的最早发生时间。
+4. 活动的最晚开工时间lte(latest time of edge):即弧ak的最晚发生时间。
