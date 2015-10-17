@@ -32,4 +32,5 @@ typedef struct
 
 void CreateTopo(GraphAdjList GL);
 Status TopologicalSort(GraphAdjList GL);
+void CriticalPath(GraphAdjList GL);
 #endif
