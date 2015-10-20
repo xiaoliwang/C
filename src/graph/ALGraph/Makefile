@@ -2,9 +2,9 @@ objects = ALGraph.o Operation.o Assist.o
 
 ALGraph : $(objects)
 ifeq ($(shell uname), MINGW32_NT-6.2)
-	gcc -o ALGraph.exe $(objects);
+	gcc -o ALGraph.exe $(objects)
 else
-	gcc -o ALGraph.out $(objects);
+	gcc -o ALGraph.out $(objects)
 endif
 
 ALGraph.o : ALGraph.c BaseData.h
