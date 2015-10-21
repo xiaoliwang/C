@@ -5,6 +5,11 @@
 #define EH 0
 #define RH -1
 
+#define TRUE 1
+#define FALSE 0
+
+typedef int Status;
+
 typedef struct BiTNode
 {
   int data;
@@ -12,6 +17,6 @@ typedef struct BiTNode
   struct BiTNode *lchild, *rchild;
 }BiTNode, *BiTree;
 
-
-
+Status InsertAVL(BiTree *T, int e, Status *taller);
+void Print_Tree(BiTree* T);
 #endif
