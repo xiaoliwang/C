@@ -1,5 +1,5 @@
 /**
- * πÈ≤¢≈≈–Ú(µ›πÈ)
+ * πÈ≤¢≈≈–Ú(∑«µ›πÈ)
  */
 #include <stdio.h>
 #include <stdlib.h>
@@ -36,23 +36,29 @@ void Merge(int SR[], int TR[], int i, int m, int n) {
   }
 }
 
-void MSort(int SR[], int TR1[], int s, int t) {
-  int m;
-  int TR2[t];
-  memset(TR2, 0, sizeof(int) * t);
-  
-  if (s == t) {
-    TR1[s] = SR[s];
-  } else {
-    m = (s + t) / 2;
-    MSort(SR, TR2, s, m);
-    MSort(SR, TR2, m + 1, t);
-    Merge(TR2, TR1, s, m, t);
+void MergePass(int SR[], int TR[], int s, int n) {
+  int i = 1;
+  int j;
+  while (i <= n - 2 * s + 1) {
+    Merge(SR, TR, i, i + s - 1, i + 2 * s - 1);
+    i = i + 2 * s;
   }
+  if (i < n - s + 1)
+    Merge(SR, TR, i, i + s -1, n);
+  else
+    for (j = i; j <= n; j++)
+      TR[j] = SR[j];
 }
 
 void MergeSort(SqList *L) {
-  MSort(L->r, L->r, 1, L->length); 
+  int *TR = (int *) malloc(L->length * sizeof(int));
+  int k = 1;
+  while (k < L->length) {
+    MergePass(L->r, TR, k, L->length);
+    k = 2 * k;
+    MergePass(TR, L->r, k, L->length);
+    k = 2 * k;
+  }
 }
 
 int main(int argc, const char* argv[])
@@ -67,7 +73,7 @@ int main(int argc, const char* argv[])
   }
   L->length = n;
   
-  puts("begin");
+  puts("BEGIN");
   for (i = 1; i <= n; i++) {
     printf("%d ", L->r[i]);
   }
